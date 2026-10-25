@@ -17,7 +17,7 @@ export default function LoginPage() {
     setError("");
     
     try {
-      // 1. Call backend to login
+      // 1. Call backend to login.
       const { token } = await loginTeacher(email, password);
       
       // 2. Save the token to localStorage
