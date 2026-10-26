@@ -10,7 +10,7 @@ const authHeaders = () => {
   };
 };
 
-// Bulletproof fetch helper
+// Bulletproof fetch helper.
 async function fetchJSON(url: string, options: any = {}) {
   let res;
   try {
