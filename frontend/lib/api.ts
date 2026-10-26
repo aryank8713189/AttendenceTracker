@@ -1,7 +1,7 @@
 const API_URL = "https://attendencetracker-4jeg.onrender.com/api";
 import { getToken } from "./auth";
 
-// Helper to attach token to headers
+// Helper to attach token to headers.
 const authHeaders = () => {
   const token = getToken();
   return {
