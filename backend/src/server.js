@@ -34,7 +34,7 @@
 // const PORT = process.env.PORT || 5000;
 
 // app.listen(PORT, () => {
-//     console.log(`Server running on port ${PORT}`);
+//     console.log(Server running on port ${PORT});
 // });
 
 
@@ -53,8 +53,19 @@ const activityRoutes = require("./routes/activityRoutes");
 const app = express();
 
 // CORS configuration
+const defaultOrigins = [
+    "https://attendence-tracker-sigma.vercel.app",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+];
+const configuredOrigins = (process.env.CORS_ORIGINS || "")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+const allowedOrigins = [...new Set([...defaultOrigins, ...configuredOrigins])];
+
 const corsOptions = {
-    origin: "https://attendence-tracker-sigma.vercel.app",
+    origin: allowedOrigins,
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -84,5 +95,5 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(Server running on port ${PORT});
 });
