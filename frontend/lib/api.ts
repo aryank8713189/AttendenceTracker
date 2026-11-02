@@ -1,4 +1,7 @@
-const API_URL = "https://attendencetracker-4jeg.onrender.com/api";
+const API_URL = process.env.NEXT_PUBLIC_API_URL ||
+  (process.env.NODE_ENV === "development"
+    ? "http://localhost:5000/api"
+    : "https://attendencetracker-4jeg.onrender.com/api");
 import { getToken } from "./auth";
 
 // Helper to attach token to headers.
